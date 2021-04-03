@@ -1,7 +1,7 @@
 # iOSInterviewPreparation
 
-How to prepare to find a job as iOS programmer.
+个人面试iOS职位相关的一些面试准备。
 
-![SnapShot.png](/Users/huangjinhua/Downloads/Learn/Github/iOSInterviewPreparation/SnapShot.png)
+![SnapShot.png](SnapShot.png)
 
 1. 
