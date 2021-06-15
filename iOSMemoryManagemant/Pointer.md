@@ -4,7 +4,7 @@
 
 苹果为了节省内存和提高执行效率，提出了NSTaggedPointer。TaggedPointer专门用来储存小对象，比如：NSNumber，NSDate等；TaggedPointer不是指针，而是值；TaggedPointer访问速度提高了3倍，创建速度提高了106倍。TaggedPointer的结构如下：
 
-![](/Users/huangjinhua/Downloads/Learn/Github/iOSInterviewPreparation/iOS内存管理/TaggedPointer.png)
+![](TaggedPointer.png)
 
 TaggedPointer由标志位，值和其他组成。
 
@@ -35,7 +35,7 @@ enum
 
 我们知道一个对象必定包含isa指针，实例对象的isa指向类对象，类的isa指向元类对象，元类对象的isa指向根元类。NONPointer__ISA指针，不仅仅保存了isa的地址，还保存了一些其他额外的信息，比如：最高位用来判断当前的指针是否是nonpointer，对象的引用计数，有没有弱引用，有没有关联对象等等。NONPointer__ISA指针也是苹果为了节省内存，提高效率而使用的技术，毕竟64位仅仅用来存储指针有点浪费，把对象的一些关键信息一起储存在指针上，不仅可以节省内存，还可以提高访问速度，比如：获取对象的引用计数等等。
 
-![](/Users/huangjinhua/Downloads/Learn/Github/iOSInterviewPreparation/iOS内存管理/ISA.png)
+![](ISA.png)
 
 | nonpointer        | 0表示普通的isa指针，1表示nonpointer_isa                                                                                               |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |

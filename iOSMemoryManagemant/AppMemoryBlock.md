@@ -11,7 +11,7 @@ App加载进内存时，系统会分将分配给应用程序的内存分成5个�
 
 整个分区如下图：
 
-![](/Users/huangjinhua/Downloads/Learn/Github/iOSInterviewPreparation/iOS内存管理/memoryblock.jpg)
+![](memoryblock.jpg)
 
 可以通过下面的代码更深一步了解内存的分区：
 

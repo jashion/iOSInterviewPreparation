@@ -2,7 +2,7 @@
 
 sideTables是一个哈希数组，里面存放的是sideTable。sideTable是一个结构体，包含一个自旋锁，引用计数表和弱引用表。（只有当对象的指针不是 NSTaggedPointer，没有开启NONPoniter_ISA优化或者开始NONPoniter_ISA但是对象的引用计数超过NONPoniter_ISA所能表示的范围时才会把对象的引用计数存在全局的sideTables。）sideTables整体的结构如下：
 
-![](/Users/huangjinhua/Downloads/Learn/Github/iOSInterviewPreparation/iOS内存管理/SIdeTables.jpg)
+![SideTables](SideTables.jpg)
 
 以上SideTable，Weak_table_t，weak_enterty_t的结构都可以在objc源码里找到，至RefcountMap通过find()函数查找对象的引用计数返回的结构，objc源码里没有直接给出来，但是返回值取指时做了位移操作，可以直接点那个宏进去，就可以看到定义的大概结构了。
 

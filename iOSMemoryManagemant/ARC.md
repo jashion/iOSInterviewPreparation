@@ -833,7 +833,7 @@ id __strong objc1 = objc;
 通过clang编译成llvm中间码：
 
 ```c
-
+clang -S -fobjc-arc -emit-llvm main.mm -o main.ll
 ```
 
 编译结果：
@@ -1433,7 +1433,7 @@ struct AutoreleasePoolPageData
 
 autoreleasePool并不是特定的结构，而是由autoreleasePoolPage连接起来的双链表，所以，结构为：
 
-![](/Users/huangjinhua/Downloads/Learn/Github/iOSInterviewPreparation/iOS内存管理/AutoreleasePool.png)
+![](AutoreleasePool.png)
 
 ##### 3.3.1objc_autoreleasePoolPush
 
