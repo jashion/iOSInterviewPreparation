@@ -1795,6 +1795,18 @@ objc_release(objc);
 
 优化后省去了一次retain和release，并且没有用到autoreleasePool。
 
+##### 3.3.5在ARC下iOS为什么还需要autoreleasePool？什么时候需要自己创建autoreleasePool?
+
+（1）在ARC下iOS为什么还需要autoreleasePool？
+
+首先ARC和autoreleasePool并不冲突，不是同一个概念。ARC只是编译器在编译期间帮忙插入retain/release/autorelease等函数，而autoreleasePool只是在适当时机将添加进去的对象执行release函数而已。至于为什么需要autoreleasePool？有几个原因：1.防止内存泄漏。如果没有autoreleasePool，线程里执行autorelease的对象就得不到释放，导致内存泄漏。至于为什么会有调用autorelease的对象，一部分是MRC遗留的问题，比如：非alloc/new/copy/mutableCopy开头的函数，在MRC时期都是加入autoreleasePool，虽然，有部分在ARC优化下（具体看3.3.4），没有加入autoreleasePool，但是还有遗留的，所以需要autoreleasePool；还有就是，一些对象想持有对象但是不想释放的，也要用到autoreleasePool。（注意：GC不需要autoreleasePool，因为内存管理机制不一样。）
+
+（2）什么时候需要自己创建autoreleasePool?
+
+1.在线程没有autoreleasePool，避免内存泄漏需要自己创建，比如：编写不基于UI 框架的程序，比如命令行工具；生成辅助线程。
+
+2.避免内存峰值。比如：在循环里创建了很多临时对象，并且都需要加入autoreleasePool的时候。因为，这些临时对象都是加入离自己最近的autoreleasePool，比如主线程的autoreleasePool，而主线程的autoreleasePool只有在进入休眠前和退出的时候才会释放autoreleasePool里面的对象，所以，在循环内部创建自己的autoreleasePool，相当于生成一个临时对象，释放一个，不会造成内存峰值。（注意：如果临时对象超出循环就释放，换句话说不会加入autoreleasePool，那么就不需要自己创建一个autoreleasePool包裹。）
+
 ### 4.总结
 
 通过对源码的分析以及阅读其他程序员的博客加深了对ARC的理解。

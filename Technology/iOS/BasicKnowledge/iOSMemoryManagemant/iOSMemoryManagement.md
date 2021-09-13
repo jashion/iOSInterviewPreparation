@@ -63,7 +63,11 @@ Debug Memory Graph（各个对象引用关系的图形化）
 
 #### 1.6说一下悬垂指针和野指针
 
+参考：
 
+悬垂指针：指向已释放的内存，会造成BAD_ACCESS。
+
+野指针：没有初始化的指针，指向未知的内存。
 
 ## 2.ARC
 
@@ -138,15 +142,120 @@ iOS对象有三种类型：taggedPointer，nonpointer_isa和非nonpointer_isa对
 
 #### 2.6说一下retain和release的实现？
 
+参考：
+
+taggedPointer：没有retain和release的概念。
+
+没有开启nonpointer_isa：
+
+1.在全局的哈希列表中，以对象的内存地址作为key，通过相关的哈希计算找到对应的SideTable。
+
+2.SideTable是一个结构体，包含引用计数表，weak表和锁，再以对象的内存地址作为key，通过相关的哈希计算找到对应的引用计数内存地址。
+
+3.最后进行增删操作。
+
+开启nonpointer_isa：
+
+1.通过相应的操作，判断引用计数是否溢出。
+
+2.没有溢出，则对象的引用计数的增删直接在指针对应的地址操作。
+
+3.溢出，则在对应的SideTable操作，步骤和没有开启nonpointer_isa一样。
+
 #### 2.7说一下dealloc的实现？
+
+参考：
+
+1.dealloc会调用objc_object::rootDealloc方法：
+
+（1）判断isTaggedPointer，如果是，则直接返回；如果不是，则走下一步。
+
+（2）判断是否是nonpointer并且没有弱引用，没有关联对象，没有C++析构函数，没有强引用，如果是，则直接调用C函数free(this)释放内存；如果不是，则走下一步。
+
+（3）调用object_dispose函数
+
+2.object_dispose函数：
+
+（1）判断对象是否为nil，如果是，则返回nil；如果不是，走下一步。
+
+（2）调用objc_destructInstance函数。
+
+（3）最后调用free函数释放内存。
+
+3.objc_destructInstance函数：
+
+（1）判断是否有C++析构函数，如果有，则执行。
+
+（2）判断是否有关联的对象，如果有，则清除关联对象。
+
+（3）调用clearDeallocating函数。
+
+4.clearDeallocating函数：
+
+（1）判断是否是没有开启nonpointer，如果是，则调用sidetable_clearDeallocating函数。
+
+（2）判断是否有弱引用或则强引用，如果有，则调用clearDeallocating_slow函数。
+
+5.sidetable_clearDeallocating和clearDeallocating_slow函数：
+
+（1）找到对象所在的SideTable，并上锁。
+
+（2）找到对象的弱引用表，清除掉。
+
+（3）擦除对象的强引用表。
+
+（4）开锁。
+
+6.dealloc流程结束。
 
 #### 2.8在MRC下如何重写Getter和Setter方法？
 
+参考：
 
+```objective-c
+@property (nonatomic, strong) NSString *brand;
+//@property (nonatomic, copy) NSString *brand;
+
+//setter
+-(void)setBrand:(NSString *)brand{
+//如果实例变量指向的地址和参数指向的地址不同
+    if (_brand != brand)
+    {
+        //将实例变量的引用计数减一
+        [_brand release];
+       //将参数变量的引用计数加一,并赋值给实例变量
+        _brand = [brand retain];  //如果是copy修饰符，则_brand = [brand copy];
+    }
+}
+
+//getter
+-(NSString *)brand{
+    //将实例变量的引用计数加1后,添加自动减1
+    //作用,保证调用getter方法取值时可以取到值的同时在完全不需要使用后释放
+    return [[_brand retain] autorelease];
+}
+
+//MRC下 手动释放内存 可重写dealloc但不要调用dealloc  会崩溃
+-(void)dealloc{
+    [_string release];
+    //必须最后调用super dealloc
+    [super  dealloc];
+}
+```
 
 ## 3.关键字
 
 #### 3.1\__weak修饰的变量是否会被注册到autoreleasePool里面？
+
+参考：
+
+Apple LLVM版本8.0.0之前：
+
+\__weak修饰的变量会注册到autoreleasePool里延时释放。
+
+Apple LLVM版本8.0.0之后：
+
+\__weak修饰的变量不会注册到autoreleasePool里，超过作用域会直接释放。
 
 #### 3.2简要说一下autoreleasePool的数据结构？
 
@@ -182,4 +291,49 @@ iOS对象有三种类型：taggedPointer，nonpointer_isa和非nonpointer_isa对
 
 #### 3.18@protocol和category中如何使用@prpperty
 
-### 
+#### 3.19@property中有哪些属性关键字？
+
+#### 3.20用@property声明的NSString（或NSArray，NSDictionary）经常使用copy关键字，为什么？如果改用strong关键字，可能造成什么问题？
+
+#### 3.21对飞机和对象的copy操作
+
+#### 3.22集合类对象的copy和mutableCopy
+
+#### 3.23@synthesize合成实例变量的规则是什么？假如property名为foo，存在一个名为_foo的实例变量，那么还会自动合成新变量吗？
+
+#### 3.24在有了自动合成属性属性实例变量后，@synthesize还有哪些使用场景？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
