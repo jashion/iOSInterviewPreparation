@@ -12,7 +12,7 @@ iOSInterviewPreparation
 
 | Project        | Description                                                  | Article                                                      | Q&A  |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
-| 算法           |                                                              | 算法概述<br/>排序算法<br/>搜索算法<br/>深度优先和广度优先<br/>动态规划<br/> |      |
+| 算法           | 算法是解决特定问题求解步骤的描述，在计算机中表现为指令的优先序列，并且每条指令表示一个或多个操作。 | [算法概述](https://www.jianshu.com/p/92e7241b8f25)<br/>[排序算法](https://github.com/jashion/Basic-Sorting-Algorithm)<br/>搜索算法<br/>深度优先和广度优先<br/>动态规划<br/> |      |
 | 数据结构       | 具有相同性质的数据的集合以及该集合上的操作。                 | [数组](https://github.com/jashion/Joy-of-data-structure)<br/>字典<br/>集合<br/>[字符串](https://github.com/jashion/Joy-of-data-structure)<br/>[链表](https://github.com/jashion/Joy-of-data-structure)<br/>[栈](https://github.com/jashion/Joy-of-data-structure)<br/>[队列](https://github.com/jashion/Joy-of-data-structure)<br/>[二叉树](https://github.com/jashion/Joy-of-data-structure)<br/>哈希表<br/> |      |
 | 设计模式       | 设计模式是前人总结的开发中的套路和模版，可以提高开发效率，节省开发事件。 |                                                              |      |
 | 计算机网络     |                                                              |                                                              |      |
@@ -32,7 +32,7 @@ iOS分成基础，进阶，Swift和跨平台。
 | 内存管理        | 内存管理是指系统对内存分配和使用的技术。其主要目的是如何高效，快速地分配，以及适当时候释放和回收内存。 | [内存分区](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/AppMemoryBlock.md)<br/>[指针优化](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/Pointer.md)<br/>[SideTable](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/SideTable.md)<br/>[ARC](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/ARC.md) | [内存管理面试题](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/iOSMemoryManagement.md) |
 | Runtime         | Runtime是一个C语言写的运行时库，使Objective-C具有动态性。    |                                                              | Runtime面试题                                                |
 | Runloop         | Runloop可以理解为一个循环，让一个线程获取循环处理事件的能力。 |                                                              | Runloop面试题                                                |
-| AutoreleasePool |                                                              |                                                              |                                                              |
+| AutoreleasePool | AutoreleasePool是一个双向链表的结构，存放自动释放的对象，在AutoreleasePool释放时会对里面所有的自动释放的对象执行一次release。 | AutoreleasePool                                              |                                                              |
 | Block           | Block是一个匿名函数，其本质上也是函数。                      |                                                              | Block面试题                                                  |
 | NSObject        |                                                              |                                                              |                                                              |
 | UIKit           | UIKit是包含iOS所有显示在屏幕上的组件。                       |                                                              |                                                              |
@@ -41,7 +41,7 @@ iOS分成基础，进阶，Swift和跨平台。
 | 通知            | NSNotification                                               |                                                              |                                                              |
 | 代理            | delegate                                                     |                                                              |                                                              |
 | 多线程          | Multithread                                                  |                                                              |                                                              |
-| 网络            | 一般App都涉及到网络，涉及到服务端据传输和数据同步的问题。 |                                                              |                                                              |
+| 网络            | 一般App都涉及到网络，涉及到服务端据传输和数据同步的问题。    |                                                              |                                                              |
 | 动画            |                                                              |                                                              |                                                              |
 | 本地数据持久化  |                                                              |                                                              |                                                              |
 | WebView         | UIWebView/WKWebView                                          |                                                              |                                                              |
