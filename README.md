@@ -14,7 +14,7 @@ iOSInterviewPreparation
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
 | 算法           |                                                              | 算法概述<br/>排序算法<br/>搜索算法<br/>深度优先和广度优先<br/>动态规划<br/> |      |
 | 数据结构       | 具有相同性质的数据的集合以及该集合上的操作。                 | [数组](https://github.com/jashion/Joy-of-data-structure)<br/>字典<br/>集合<br/>[字符串](https://github.com/jashion/Joy-of-data-structure)<br/>[链表](https://github.com/jashion/Joy-of-data-structure)<br/>[栈](https://github.com/jashion/Joy-of-data-structure)<br/>[队列](https://github.com/jashion/Joy-of-data-structure)<br/>[二叉树](https://github.com/jashion/Joy-of-data-structure)<br/>哈希表<br/> |      |
-| 设计模式       | 设计模式是前人总结的开发中的<br />套路和模版，可以提高开发效率，<br />节省开发事件。 |                                                              |      |
+| 设计模式       | 设计模式是前人总结的开发中的套路和模版，可以提高开发效率，节省开发事件。 |                                                              |      |
 | 计算机网络     |                                                              |                                                              |      |
 | 操作系统       |                                                              |                                                              |      |
 | 数据库         |                                                              |                                                              |      |
@@ -29,7 +29,7 @@ iOS分成基础，进阶，Swift和跨平台。
 
 | Project         | Description                                                  | Article                                                      | InterViewQuestions                                           |
 | --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 内存管理        | 内存管理是指系统对内存分配<br />和使用的技术。其主要目的是<br />如何高效，快速地分配，以及<br />适当时候释放和回收内存。 | [内存分区](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/AppMemoryBlock.md)<br/>[指针优化](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/Pointer.md)<br/>[SideTable](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/SideTable.md)<br/>[ARC](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/ARC.md) | [内存管理面试题](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/iOSMemoryManagement.md) |
+| 内存管理        | 内存管理是指系统对内存分配和使用的技术。其主要目的是如何高效，快速地分配，以及适当时候释放和回收内存。 | [内存分区](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/AppMemoryBlock.md)<br/>[指针优化](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/Pointer.md)<br/>[SideTable](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/SideTable.md)<br/>[ARC](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/ARC.md) | [内存管理面试题](Technology/iOS/BasicKnowledge/iOSMemoryManagemant/iOSMemoryManagement.md) |
 | Runtime         | Runtime是一个C语言写的运行时库，使Objective-C具有动态性。    |                                                              | Runtime面试题                                                |
 | Runloop         | Runloop可以理解为一个循环，让一个线程获取循环处理事件的能力。 |                                                              | Runloop面试题                                                |
 | AutoreleasePool |                                                              |                                                              |                                                              |
@@ -41,7 +41,7 @@ iOS分成基础，进阶，Swift和跨平台。
 | 通知            | NSNotification                                               |                                                              |                                                              |
 | 代理            | delegate                                                     |                                                              |                                                              |
 | 多线程          | Multithread                                                  |                                                              |                                                              |
-| 网络            | 一般App都涉及到网络，涉及到服务端据<br />传输和数据同步的问题。 |                                                              |                                                              |
+| 网络            | 一般App都涉及到网络，涉及到服务端据传输和数据同步的问题。 |                                                              |                                                              |
 | 动画            |                                                              |                                                              |                                                              |
 | 本地数据持久化  |                                                              |                                                              |                                                              |
 | WebView         | UIWebView/WKWebView                                          |                                                              |                                                              |
@@ -58,7 +58,7 @@ iOS分成基础，进阶，Swift和跨平台。
 | 热更新         |                                                              |                                            |                    |
 | 第三方库       |                                                              |                                            |                    |
 | 项目架构       |                                                              |                                            |                    |
-| 设计模式       | 设计模式是前人总结的开发中的<br />套路和模版，可以提高开发效率，<br />节省开发事件。 | 创建型：<br />结构型：<br />行为型：<br /> |                    |
+| 设计模式       | 设计模式是前人总结的开发中的套路和模版，可以提高开发效率，节省开发事件。 | 创建型：结构型：行为型： |                    |
 | 代码管理       |                                                              |                                            |                    |
 | 数据安全与加密 |                                                              |                                            |                    |
 
